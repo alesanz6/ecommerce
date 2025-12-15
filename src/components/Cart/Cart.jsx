@@ -2,7 +2,25 @@ import "./Cart.css"
 import { useCart } from "../CartContext/CartContext";
 
 const Cart = () => {
-    const {carrito} = useCart();
+    const {carrito, actualizarCantidad, eliminarProducto} = useCart();
+
+    const costoDeEnvio = 10;
+    const subTotal = carrito.reduce((acc, producto) =>
+        acc + producto.precio * producto.cantidad, 0)
+    const total = subTotal + costoDeEnvio
+
+    const handleAumentarCantidad = (productoId) => {
+        actualizarCantidad(productoId, 1)
+    }
+
+    const handleDisminuirCantidad = (productoId) => {
+        const producto = carrito.find((item) => item.id === productoId)
+        if(producto.cantidad > 1) {
+            actualizarCantidad(productoId, -1)
+        }
+    }
+
+
     return (
         <div className="cart-container">
             <h2>Tu <span>Carrito</span></h2>
@@ -21,6 +39,7 @@ const Cart = () => {
                 <ul className="cart-items">
                     {
                         carrito.map((producto) => {
+                            const totalPrecio = producto.precio * producto.cantidad
                             return (
                                 <li className="cart-item" key={producto.id}>
                                     <div className="product-info">
@@ -30,19 +49,22 @@ const Cart = () => {
                                     <p>{producto.precio.toFixed(2)} €</p>
 
                                     <div className="quantity-controls">
-                                        <button className="quantity-btn">
+                                        <button className="quantity-btn"
+                                        onClick={() => handleDisminuirCantidad (producto.id)}>
                                             -
                                         </button>
                                         <input type="number" 
                                         className="quantity-input"
                                         readOnly
                                         value={producto.cantidad}/>
-                                         <button className="quantity-btn">
+                                         <button className="quantity-btn"
+                                         onClick={() => handleAumentarCantidad(producto.id)}>
                                             +
                                         </button>
                                     </div>
-                                    <p>0 €</p>
-                                    <button className="delete-btn">
+                                    <p>{totalPrecio.toFixed(2)} €</p>
+                                    <button className="delete-btn"
+                                    onClick={()=> eliminarProducto(producto.id)}>
                                     <i className="fas fa-trash"></i>
                                     </button>
                                 </li>
@@ -54,6 +76,14 @@ const Cart = () => {
             )
 
             }
+            <div className="cart-summary">
+                <h2>Tu <span>Carrito</span></h2>
+                <p>Total Parcial: <span>{subTotal.toFixed(2)}</span></p>
+                <p>Envío: <span></span>{costoDeEnvio.toFixed(2)}</p>
+                <p className="total">Total: <span>{total.toFixed(2)}</span></p>
+                <button className="checkout-btn">Pagar</button>
+            </div>
+
         </div>
     )
 }
