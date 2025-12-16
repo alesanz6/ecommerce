@@ -1,7 +1,8 @@
 import { useState } from "react"
 import "./Search.css"
 
-const Search = ({onSearch}) => {
+
+const Search = ({onSearch, searchRef}) => {
     const [buscarTermino, setBuscarTermino] = useState("")
     const handleBuscarChange = (e) => {
         const termino = e.target.value;
@@ -10,7 +11,9 @@ const Search = ({onSearch}) => {
     }
     return (
         <section className="search">
-            <input type="search"
+            <input 
+            ref={searchRef}
+            type="search"
             placeholder="Buscar"
             className="search-bar"
             value={buscarTermino}

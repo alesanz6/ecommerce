@@ -12,6 +12,7 @@
 .filter-category {
     padding: 1rem;
     border: 2px solid #ddd;
+    border-radius: 10px;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
@@ -20,6 +21,7 @@
 .filter-type{
     padding: 1rem;
     border: 1px solid #ddd;
+    
 }
 
 .filter h2 {
@@ -38,9 +40,10 @@
 }
 
 .filter-category label {
-    display: inline-block;
+    display: flex;
     position: relative;
     margin-bottom: 10px;
+    gap: 6px;
 }
 
 .filter-category span {
@@ -74,6 +77,14 @@ input[type="checkbox"] {
     width: 100%;
 }
 
+.sort-option label {
+    display: flex;
+    gap: 8px;
+}
+.sort-option select {
+    border-radius: 8px;
+}
+
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -81,21 +92,59 @@ input[type="checkbox"] {
     /*min-width: 600px;*/
 }
 
+.my-masonry-grid {
+  display: flex;
+  margin-left: -10px; /* gutter */
+  width: auto;
+  margin-bottom: 10px;
+}
+.my-masonry-grid_column {
+  padding-left: 10px; /* gutter */
+  background-clip: padding-box;
+}
+.my-masonry-grid_column > .product-car {
+  margin-bottom: 20px; /* gutter vertical */
+}
+
+.product-car.large img {
+    height: 300px; /* ejemplo de altura más grande */
+    object-fit: cover;
+}
+
+/* Producto grande opcional 
+.product-car.large {
+  grid-row-end: span 2; /* altura doble si quieres 
+}*/
+
+
 .product-car {
-    text-align: center;
     background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+}
+.product-car:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .product-image{
-    max-width: 100%;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .product-image:hover {
-    transform: scale(1.09);
+    transform: scale(1.05);
 }
 
 .product-card h3 {

@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react"
 import "./ProductList.css"
 import { useNavigate } from "react-router-dom";
+import Masonry from "react-masonry-css";
 
 const ProductList = ({buscarTermino}) => {
-
+    const breakpointColumnsObj = {
+        default: 4,
+        1200:3,
+        768:2,
+        480:1
+    };
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null)
     const [orden, setOrden] = useState("Relevantes");
@@ -69,6 +75,7 @@ const ProductList = ({buscarTermino}) => {
     }
 
     return (
+        
         <section className="main-content">
             <aside className="filters">
                 <h2>Filtros</h2>
@@ -125,7 +132,7 @@ const ProductList = ({buscarTermino}) => {
                     <h2>Todas las colecciones</h2>
                     <div className="sort-option">
                         <label>
-                            Ordenar por:
+                            Ordenar por :
                             <select onChange={handleOrdenChange} value={orden}>
                                 <option> Relevantes </option>
                                 <option> Precio: Menor a Mayor </option>
@@ -141,8 +148,15 @@ const ProductList = ({buscarTermino}) => {
                     {error ? (
                         <p className="error-message">{error}</p>
                     ): productosFiltrados.length > 0 ? (
-                        productosOrdenados.map((producto) => (
-                            <div className="product-car" key={producto.id}>
+                        <Masonry
+                          breakpointCols={breakpointColumnsObj}
+                          className="my-masonry-grid"
+                          columnClassName="my-masonry-grid_column"
+                        >
+                        {productosOrdenados.map((producto, index) => {
+                            const isLarge = index % 7 === 0; // cada 5 producto es grande
+                            return (
+                            <div className={`product-car ${isLarge ? "large" : ""}`} key={producto.id}>
                                 <img src={producto.image} alt={producto.image}
                                 className="product-image" 
                                 onClick={() =>  handleImageClick(producto.id)} 
@@ -150,14 +164,16 @@ const ProductList = ({buscarTermino}) => {
                                 <h3>{producto.nombre}</h3>
                                 <p>{producto.precio} €</p>
                             </div>
-                        ))
+                        );
+                    })}
+                        </Masonry>
                     ) : (
                         <p className="no-results">
                             No hay productos que coincidad con esos filtros
                         </p>
                     )}
                 </div>
-
+            
             </main>
 
         </section>

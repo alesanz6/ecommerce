@@ -7,15 +7,18 @@
     border-bottom: 1px solid #ddd;
 }
 
-.logo{
-    font-size: 24px;
-    font-weight: bold;
-    color: #991A0B;
-    cursor: pointer;
+.logo {
+    background-image: url(/src/components/Navbar/nube.webp);
+    background-size: cover;
+    background-clip: text;
+    color: transparent;
+    animation: animate 20s  linear infinite;
 }
 
-.logo span {
-    color: #000;
+@keyframes animate {
+    to {
+        background-position: -500px;
+    }
 }
 
 .navbar {
