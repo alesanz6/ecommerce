@@ -1,4 +1,4 @@
-# 🛍 T-Under - E-commerce React App
+#  T-Under - E-commerce React App
 
 [![React](https://img.shields.io/badge/React-18.2.0-blue?logo=react&logoColor=white)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-4.0.0-green?logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -6,7 +6,7 @@
 
 ---
 
-## 🎯 Descripción
+##  Descripción
 
 **T-Under** es una aplicación de **e-commerce moderna** desarrollada con **React** y **Vite**, que permite explorar productos de forma dinámica, realizar búsquedas avanzadas y gestionar un carrito de compras de manera intuitiva.  
 
