@@ -43,5 +43,5 @@ El proyecto consume los datos de productos desde la **API pública Edukuk**, mos
 Clonar el repositorio:
 
 ```bash
-git clone https://github.com/tuusuario/t-under.git
+git clone https://github.com/alesanz6/t-under.git
 cd t-under
