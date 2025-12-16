@@ -8,7 +8,7 @@
 }
 
 .logo {
-    background-image: url(/src/components/Navbar/nube.webp);
+    background-image: url(/nube.webp);
     background-size: cover;
     background-clip: text;
     color: transparent;
