@@ -10,7 +10,7 @@
 
 **T-Under** es una aplicación de **e-commerce moderna** desarrollada con **React** y **Vite**, que permite explorar productos de forma dinámica, realizar búsquedas avanzadas y gestionar un carrito de compras de manera intuitiva.  
 
-El proyecto consume los datos de productos desde la **API pública Edukuk**, mostrando fotos, precios y descripciones de manera atractiva y responsiva.  
+El proyecto consume los datos de productos desde la **API pública**, mostrando fotos, precios y descripciones de manera atractiva y responsiva.  
 
 ---
 
